@@ -172,5 +172,68 @@ func SetupDatabase() {
 		Total:               3200,
 	})
 
+	//ประเมิณอาจารย์ของเพื่อน
+	//password
+	// phone_1, err := bcrypt.GenerateFromPassword([]byte("0935463156"), 14)
+	// phone_2, err := bcrypt.GenerateFromPassword([]byte("0917271607"), 14)
+
+//Teaching_duration data
+
+	duration_one := Teaching_duration{
+		Description: "ใช้เวลานานเกินไปในการสอน",
+	}
+	db.Model(&Teaching_duration{}).Create(&duration_one)
+
+	duration_two := Teaching_duration{
+		Description: "มีการใช้เวลาบางเนื้อหานานเกินไป",
+	}
+	db.Model(&Teaching_duration{}).Create(&duration_two)
+
+	duration_three := Teaching_duration{
+		Description: "เวลาเหมาะสมกับเนื้อหาที่เรียน",
+	}
+	db.Model(&Teaching_duration{}).Create(&duration_three)
+
+//content_quality data
+
+	quality_one := Content_quality{
+		Description: "เนื้อหาควรที่จะมีการอัพเดต",
+	}
+	db.Model(&Content_quality{}).Create(&quality_one)
+
+	quality_two := Content_quality{
+		Description: "เนื้อหาอยู่ในระดับปกติ",
+	}
+	db.Model(&Content_quality{}).Create(&quality_two)
+
+	quality_three := Content_quality{
+		Description: "เนื้อหามีความเหมาะสมกับรายวิชา",
+	}
+	db.Model(&Content_quality{}).Create(&quality_three)
+
+//content difficulty level data
+
+	difficulty_one := Content_difficulty_level{
+		Description: "ยากเกินไป",
+	}
+	db.Model(&Content_difficulty_level{}).Create(&difficulty_one)
+
+	difficulty_two := Content_difficulty_level{
+		Description: "พอใช้",
+	}
+	db.Model(&Content_difficulty_level{}).Create(&difficulty_two)
+
+	difficulty_three := Content_difficulty_level{
+		Description: "เหมาะสม",
+	}
+	db.Model(&Content_difficulty_level{}).Create(&difficulty_three)
+
+	difficulty_four := Content_difficulty_level{
+		Description: "เข้าใจง่าย",
+	}
+	db.Model(&Content_difficulty_level{}).Create(&difficulty_four)
+
+
+
 
 }

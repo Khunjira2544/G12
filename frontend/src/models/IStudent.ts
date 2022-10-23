@@ -11,6 +11,7 @@ export interface StudentInterface {
     Date_of_birth?: string;
     Phone?: string;
     Parent?: string;
+    Password?: string;
 
     Teacher?: TeachersInterface;
     TeacherID?: number;     // foreignkey.ID?

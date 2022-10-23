@@ -144,6 +144,7 @@ function App() {
 	    date_of_birth: moment(BirthDay).format("YYYY-MM-DD"),
 	    Phone: Phone,      
 	    Parent: Parent,  
+      Password: Phone,
     };
 
     let res = await Student(data);

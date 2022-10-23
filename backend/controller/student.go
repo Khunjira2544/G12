@@ -53,21 +53,22 @@ func CreateStudent(c *gin.Context) {
 	}
 	c.JSON(http.StatusCreated, gin.H{"data": wv})
 }*/
+
 // POST /subject
-func CreateStudent(c *gin.Context) {
-	var student entity.Student
-	if err := c.ShouldBindJSON(&student); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
+// func CreateStudent(c *gin.Context) {
+// 	var student entity.Student
+// 	if err := c.ShouldBindJSON(&student); err != nil {
+// 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+// 		return
+// 	}
 
-	if err := entity.DB().Create(&student).Error; err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
+// 	if err := entity.DB().Create(&student).Error; err != nil {
+// 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+// 		return
+// 	}
 
-	c.JSON(http.StatusOK, gin.H{"data": student})
-}
+// 	c.JSON(http.StatusOK, gin.H{"data": student})
+// }
 
 /*// GET /watchvideo/:id
 func GetStudent(c *gin.Context) {

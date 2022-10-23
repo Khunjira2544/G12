@@ -43,7 +43,6 @@ type Collegeyear struct {
 // 	Students []Student `gorm:"foreignKey:TeacherID"`
 // }
 
-
 type Student struct {
 	gorm.Model
 	S_ID          string
@@ -52,6 +51,7 @@ type Student struct {
 	Date_of_birth string
 	Phone         string
 	Parent        string
+	Password      string
 
 	OfficerID *uint
 	Officer   Officer `gorm:"references:id"`
@@ -66,8 +66,7 @@ type Student struct {
 	Teacher   Teacher `gorm:"references:id"`
 }
 
-
-//bill
+// bill
 type Payment struct {
 	Payment_ID    string `gorm:"primaryKey"`
 	Name          string
@@ -82,14 +81,14 @@ type Bill struct {
 	Bill_RegistrationID string
 
 	//FK
-	Payment_ID *string   //ไม่ใช้ มันบัค`gorm:"references:payment_id"`
+	Payment_ID *string //ไม่ใช้ มันบัค`gorm:"references:payment_id"`
 	Payment    Payment
 
 	Bill_OfficerID string
 	Total          uint
 }
 
-//Subject 
+// Subject
 type Time struct {
 	gorm.Model
 	Period string
@@ -119,7 +118,7 @@ type Subject struct {
 	Time   Time
 }
 
-//Teacher
+// Teacher
 type Prefix struct {
 	gorm.Model
 	Name    string    `gorm:"uniqueIndex"`
@@ -131,6 +130,7 @@ type Educational struct {
 	Name    string    `gorm:"uniqueIndex"`
 	Teacher []Teacher `gorm:"ForeignKey:EducationalID"`
 }
+
 // Teacher ของเพื่อน
 type Teacher struct {
 	gorm.Model
@@ -147,3 +147,44 @@ type Teacher struct {
 	Educational   Educational
 }
 
+// ประเมิณอาจารย์ ของเพื่อน
+type Teaching_duration struct {
+	gorm.Model
+	Description string `gorm:"uniqueIndex"`
+
+	Teacher_assessment []Teacher_assessment `gorm:"foreignKey:Teaching_duration_ID"`
+}
+
+type Content_difficulty_level struct {
+	gorm.Model
+	Description string `gorm:"uniqueIndex"`
+
+	Teacher_assessment []Teacher_assessment `gorm:"foreignKey:Content_difficulty_level_ID"`
+}
+
+type Content_quality struct {
+	gorm.Model
+	Description string `gorm:"uniqueIndex"`
+
+	Teacher_assessment []Teacher_assessment `gorm:"foreignKey:Content_quality_ID"`
+}
+
+type Teacher_assessment struct {
+	gorm.Model
+	Comment string
+
+	Student_ID *uint
+	Student    Student `gorm:"references:id"`
+
+	Teacher_ID *uint
+	Teacher    Teacher `gorm:"references:id"`
+
+	Teaching_duration_ID *uint
+	Teaching_duration    Teaching_duration `gorm:"references:id"`
+
+	Content_difficulty_level_ID *uint
+	Content_difficulty_level    Content_difficulty_level `gorm:"references:id"`
+
+	Content_quality_ID *uint
+	Content_quality    Content_quality `gorm:"references:id"`
+}

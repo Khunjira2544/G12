@@ -26,7 +26,7 @@ import Home from "./components/Home";
 import Officers from "./components/Officers";
 import OfficerCreate from "./components/OfficerCreate";
 import Student from "./components/Student";
-import SignIn from "./components/Signin";
+// import SignIn from "./components/Signin";
 import StudentCreate from "./components/StudentCreate";
 import BillCreate from "./components/BillCreate";
 import Bills from "./components/Bills";
@@ -34,6 +34,9 @@ import { Subject } from "@mui/icons-material";
 import SubjectCreate from "./components/SubjectCreate";
 import Teacher_List from "./components/Teacher_list";
 import Teacher_Create from "./components/Teacher_Create";
+import Teacher_assessmentList from "./components/Teacher_assessmentList";
+import Teacher_assessmentCreate from "./components/Teacher_assessmentcreate";
+import SignIn from "./components/SignInStudent";
 
 const drawerWidth = 240;
 
@@ -96,7 +99,8 @@ const menu = [
   { name: "List ข้อมูลอาจารย์", icon: <BookIcon />, path: "/Teacher_list" },
   { name: "สร้างบิล", icon: <BookIcon />, path: "/bill/create" },
   { name: "List ข้อมูลการชำระค่าลงทะเบียนเรียน", icon: <BookIcon />, path: "/bills" },
-  
+  { name: "ประเมินผู้สอน", icon: <PeopleIcon />, path: "/Teacher_assessment/create" },
+  { name: "List ประเมินผู้สอน", icon: <BookIcon />, path: "/Teacher_assessment" },
 ];
 
 function App() {
@@ -217,6 +221,9 @@ function App() {
 
                 <Route path="/Teacher_list" element={<Teacher_List />} />
                 <Route path="/Teacher_create" element={<Teacher_Create />} />
+
+                <Route path="/Teacher_assessment" element={<Teacher_assessmentList />} />
+                <Route path="/Teacher_assessment/create" element={<Teacher_assessmentCreate />} /> 
 
               </Routes>
             </Container>

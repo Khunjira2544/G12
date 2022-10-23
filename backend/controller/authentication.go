@@ -96,6 +96,7 @@ func CreateOfficer(c *gin.Context) {
 	officer.Email = payload.Email
 	officer.Password = string(hashPassword)
 
+
 	if err := entity.DB().Create(&officer).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
@@ -103,3 +104,4 @@ func CreateOfficer(c *gin.Context) {
 
 	c.JSON(http.StatusCreated, gin.H{"data": officer})
 }
+
